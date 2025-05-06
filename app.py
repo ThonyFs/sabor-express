@@ -9,11 +9,14 @@ def exibir_nome_programa():
     print('Sabor Express\n')
 def exibir_subtitulo(texto):
     os.system('cls')
+    linha ='*' * (len(texto))
+    print(linha)
     print(texto)
+    print(linha)
 def exibir_opcao():
     print('1. Cadastrar Restaurante')
     print('2. Listar Restaurante')
-    print('3. Ativar Restaurante')
+    print('3. Alterar estado do Restaurante')
     print('4. Sair\n')
 def finalizar_app():
     exibir_subtitulo('finalizando o App')
@@ -33,11 +36,12 @@ def cadastrar_restaurante():
     voltar_ao_menu_principal()
 def listar_restaurantes():
     exibir_subtitulo('Listando restaurantes')
+    print(f'{'Nome do restaurante'.ljust(22)} | {'Categoria'.ljust(20)} | Status')
     for restaurante in restaurantes:
         nome_restaurante = restaurante['nome']
         categoria_restaurante = restaurante['categoria']
-        ativo_restaurante = restaurante['ativo']
-        print(f'- {nome_restaurante} | {categoria_restaurante} | {ativo_restaurante}')
+        ativo_restaurante = 'ativado' if restaurante['ativo'] else 'desativado'
+        print(f'- {nome_restaurante.ljust(20)} | {categoria_restaurante.ljust(20)} | {ativo_restaurante}')
     voltar_ao_menu_principal()
 def alternar_estado_restaurante():
     exibir_subtitulo('Alternando estado do restaurante')
